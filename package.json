@@ -1,0 +1,24 @@
+{
+  "name": "daily-playlist-authorization",
+  "version": "1.0.0",
+  "description": "spotify authorization",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node index.js"
+  },
+  "keywords": [
+    "spotify",
+    "api",
+    "authorization"
+  ],
+  "author": "Phuong Laitinen, Vy Pham, Otso Lappalainen",
+  "license": "ISC"
+}
