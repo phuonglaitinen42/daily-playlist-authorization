@@ -10,7 +10,8 @@ require("dotenv").config();
 // Request .env details from Team-chat.
 var client_id = process.env.SPOTIFY_CLIENT_ID;
 var client_secret = process.env.SPOTIFY_CLIENT_SECRET;
-var redirect_uri = process.env.SPOTIFY_REDIRECT_URI || 5000;
+var redirect_uri = process.env.SPOTIFY_REDIRECT_URI || 8888;
+var PORT = Process.env.PORT || 5000;
 
 /**
  * Generates a random string containing numbers and letters
@@ -150,5 +151,6 @@ app.get("/refresh_token", function (req, res) {
   });
 });
 
-console.log("Listening on 5000");
-app.listen(5000);
+app.listen(PORT, function(){
+  console.log('Listening on port 5000',);
+});
