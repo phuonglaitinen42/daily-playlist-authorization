@@ -11,7 +11,7 @@ require("dotenv").config();
 var client_id = process.env.SPOTIFY_CLIENT_ID;
 var client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 var redirect_uri = process.env.SPOTIFY_REDIRECT_URI || 8888;
-var PORT = Process.env.PORT || 5000;
+var PORT = process.env.PORT || 5000;
 
 /**
  * Generates a random string containing numbers and letters
@@ -152,5 +152,5 @@ app.get("/refresh_token", function (req, res) {
 });
 
 app.listen(PORT, function(){
-  console.log('Listening on port 5000',);
+  console.log('Listening on port 5000');
 });
