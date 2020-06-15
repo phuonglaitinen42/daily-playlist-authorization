@@ -11,7 +11,7 @@ require("dotenv").config();
 // .env files are also now as heroku config variants.
 var client_id = process.env.SPOTIFY_CLIENT_ID;
 var client_secret = process.env.SPOTIFY_CLIENT_SECRET;
-// final_uri is now our heroku website.
+// final_uri and redirect are now our heroku websites
 var redirect_uri = process.env.SPOTIFY_REDIRECT_URI || 5000;
 var final_uri = process.env.FINAL_URI || 3000;
 var PORT = process.env.PORT || 5000;
