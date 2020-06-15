@@ -10,13 +10,9 @@ require("dotenv").config();
 // Request .env details from Team-chat.
 // .env files are also now as heroku config variants.
 var client_id = process.env.CLIENT_ID;
-console.log(client_id);
 var client_secret = process.env.CLIENT_SECRET;
-console.log(client_secret);
 var redirect_uri = process.env.REDIRECT_URI || 5000;
-console.log(redirect_uri);
 var PORT = process.env.PORT || 5000;
-console.log(PORT);
 
 /**
  * Generates a random string containing numbers and letters
@@ -47,24 +43,24 @@ app.get("/", function (req, res) {
   res.send("Hello World");
 });
 
-app.get("/login", function (req, res) {
-  var state = generateRandomString(16);
-  res.cookie(stateKey, state);
+// app.get("/login", function (req, res) {
+//   var state = generateRandomString(16);
+//   res.cookie(stateKey, state);
 
-  // your application requests authorization
-  var scope = "user-read-private user-read-email user-read-playback-state";
-  res.redirect(
-    "https://accounts.spotify.com/authorize?" +
-      querystring.stringify({
-        response_type: "code",
-        client_id: client_id,
-        scope: "user-read-private user-read-email",
-        redirect_uri:
-          "https://daily-playlist-authorization.herokuapp.com/callback",
-        state: state,
-      })
-  );
-});
+//   // your application requests authorization
+//   var scope = "user-read-private user-read-email user-read-playback-state";
+//   res.redirect(
+//     "https://accounts.spotify.com/authorize?" +
+//       querystring.stringify({
+//         response_type: "code",
+//         client_id: client_id,
+//         scope: "user-read-private user-read-email",
+//         redirect_uri:
+//           "https://daily-playlist-authorization.herokuapp.com/callback",
+//         state: state,
+//       })
+//   );
+// });
 
 app.get("/callback", function (req, res) {
   // your application requests refresh and access tokens
