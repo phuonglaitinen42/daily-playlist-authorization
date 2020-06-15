@@ -43,25 +43,6 @@ app.get("/", function (req, res) {
   res.send("Hello World");
 });
 
-// app.get("/login", function (req, res) {
-//   var state = generateRandomString(16);
-//   res.cookie(stateKey, state);
-
-//   // your application requests authorization
-//   var scope = "user-read-private user-read-email user-read-playback-state";
-//   res.redirect(
-//     "https://accounts.spotify.com/authorize?" +
-//       querystring.stringify({
-//         response_type: "code",
-//         client_id: client_id,
-//         scope: "user-read-private user-read-email",
-//         redirect_uri:
-//           "https://daily-playlist-authorization.herokuapp.com/callback",
-//         state: state,
-//       })
-//   );
-// });
-
 app.get("/callback", function (req, res) {
   // your application requests refresh and access tokens
   // after checking the state parameter
@@ -72,14 +53,6 @@ app.get("/callback", function (req, res) {
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
 
-  // if (state === null || state !== storedState) {
-  //   res.redirect(
-  //     "/#" +
-  //       querystring.stringify({
-  //         error: "state_mismatch",
-  //       })
-  //   );
-  // } else {
   var authOptions = {
     url: "https://accounts.spotify.com/api/token",
     form: {
