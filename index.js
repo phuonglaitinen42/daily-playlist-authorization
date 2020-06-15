@@ -12,7 +12,6 @@ require("dotenv").config();
 var client_id = process.env.SPOTIFY_CLIENT_ID;
 var client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 var redirect_uri = process.env.SPOTIFY_REDIRECT_URI || 5000;
-var final_uri = process.env.FINAL_URI || 3000;
 var PORT = process.env.PORT || 5000;
 
 
@@ -53,7 +52,7 @@ app.get("/login", function (req, res) {
         response_type: "code",
         client_id: client_id,
         scope: "user-read-private user-read-email",
-        redirect_uri: redirect_uri,
+        redirect_uri: "https://daily-playlist-authorization.herokuapp.com",
         state: state,
       })
   );
@@ -110,7 +109,7 @@ app.get("/callback", function (req, res) {
 
       // we can also pass the token to the browser to make requests from there
       res.redirect(
-        final_uri +
+        "https://daily-playlist-frontend.herokuapp.com/playlist/#" +
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token,
