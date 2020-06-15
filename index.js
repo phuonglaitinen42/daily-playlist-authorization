@@ -8,6 +8,7 @@ var cookieParser = require("cookie-parser");
 // .env required
 require("dotenv").config();
 // Request .env details from Team-chat.
+// .env files are also now as heroku config variants.
 var client_id = process.env.SPOTIFY_CLIENT_ID;
 var client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 var redirect_uri = process.env.SPOTIFY_REDIRECT_URI || 5000;
