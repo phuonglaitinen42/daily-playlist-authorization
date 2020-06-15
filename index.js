@@ -10,7 +10,7 @@ require("dotenv").config();
 // Request .env details from Team-chat.
 var client_id = process.env.SPOTIFY_CLIENT_ID;
 var client_secret = process.env.SPOTIFY_CLIENT_SECRET;
-var redirect_uri = process.env.SPOTIFY_REDIRECT_URI || 8888;
+var redirect_uri = process.env.SPOTIFY_REDIRECT_URI || 5000;
 var PORT = process.env.PORT || 5000;
 
 /**
