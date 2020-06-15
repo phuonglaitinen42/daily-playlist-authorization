@@ -52,7 +52,7 @@ app.get("/login", function (req, res) {
         response_type: "code",
         client_id: client_id,
         scope: "user-read-private user-read-email",
-        redirect_uri: "https://daily-playlist-authorization.herokuapp.com",
+        redirect_uri: "https://daily-playlist-authorization.herokuapp.com/callback",
         state: state,
       })
   );
