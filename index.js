@@ -9,11 +9,14 @@ var cookieParser = require("cookie-parser");
 require("dotenv").config();
 // Request .env details from Team-chat.
 // .env files are also now as heroku config variants.
-var client_id = process.env.SPOTIFY_CLIENT_ID;
-var client_secret = process.env.SPOTIFY_CLIENT_SECRET;
-var redirect_uri = process.env.SPOTIFY_REDIRECT_URI || 5000;
+var client_id = process.env.CLIENT_ID;
+console.log(client_id);
+var client_secret = process.env.CLIENT_SECRET;
+console.log(client_secret);
+var redirect_uri = process.env.REDIRECT_URI || 5000;
+console.log(redirect_uri);
 var PORT = process.env.PORT || 5000;
-
+console.log(PORT);
 
 /**
  * Generates a random string containing numbers and letters
@@ -40,6 +43,10 @@ app
   .use(cors())
   .use(cookieParser());
 
+app.get("/", function (req, res) {
+  res.send("Hello World");
+});
+
 app.get("/login", function (req, res) {
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
@@ -52,7 +59,8 @@ app.get("/login", function (req, res) {
         response_type: "code",
         client_id: client_id,
         scope: "user-read-private user-read-email",
-        redirect_uri: "https://daily-playlist-authorization.herokuapp.com/callback",
+        redirect_uri:
+          "https://daily-playlist-authorization.herokuapp.com/callback",
         state: state,
       })
   );
@@ -80,7 +88,8 @@ app.get("/callback", function (req, res) {
     url: "https://accounts.spotify.com/api/token",
     form: {
       code: code,
-      redirect_uri: "https://daily-playlist-authorization.herokuapp.com/callback",
+      redirect_uri:
+        "https://daily-playlist-authorization.herokuapp.com/callback",
       grant_type: "authorization_code",
     },
     headers: {
@@ -153,6 +162,6 @@ app.get("/refresh_token", function (req, res) {
   });
 });
 
-app.listen(PORT, function(){
-  console.log('Listening on port 5000');
+app.listen(PORT, function () {
+  console.log(`Listening on port ${PORT}`);
 });
